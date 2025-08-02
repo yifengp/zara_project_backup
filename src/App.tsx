@@ -9,6 +9,12 @@ import NewInPage from './pages/NewInPage';
 import AsymmetricDressPage from './pages/AsymmetricDressPage';
 import FlowyDressPage from './pages/FlowyDressPage';
 
+export interface ProductColor {
+  name: string;
+  value: string;
+  image: string;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -18,7 +24,7 @@ export interface Product {
   images: string[];
   category: string;
   sizes: string[];
-  colors: string[];
+  colors: ProductColor[];
   description: string;
   isBestSeller?: boolean;
 }
@@ -46,19 +52,23 @@ function AppContent() {
   };
 
   const products: Product[] = [
-    // Women's Product (1 item)
     {
       id: 'best1',
       name: 'SEQUIN MINI SKIRT',
       price: 65.90,
       image: '/SEQUIN MINI Skirt.jpg',
       images: [
-        '/SEQUIN MINI Skirt.jpg',
-        '/SEQUIN MINI Skirt.jpg'
+        '/SEQUIN MINI Skirt copy copy.jpg', // blue
+        '/SEQUIN MINI Skirt copy.jpg',      // red
+        '/SEQUIN MINI Skirt.jpg'            // yellow
       ],
       category: 'Woman',
       sizes: ['S', 'M', 'L'],
-      colors: ['Light Blue'],
+      colors: [
+        { name: 'Blue', value: 'blue', image: '/SEQUIN MINI Skirt copy copy.jpg' },
+        { name: 'Red', value: 'red', image: '/SEQUIN MINI Skirt copy.jpg' },
+        { name: 'Yellow', value: 'yellow', image: '/SEQUIN MINI Skirt.jpg' }
+      ],
       description: 'Sequin mini skirt with shimmering finish. Perfect for special occasions.',
       isBestSeller: true
     },
@@ -75,7 +85,7 @@ function AppContent() {
       ],
       category: 'Man',
       sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-      colors: ['Yellow', 'Blue'],
+      colors: [{ name: 'Yellow', value: '#FFFF00', image: '' }, { name: 'Blue', value: '#0000FF', image: '' }],
       description: 'Classic collar shirt with long sleeves and button fastening.',
       isBestSeller: true
     },
@@ -92,7 +102,7 @@ function AppContent() {
       ],
       category: 'Kids',
       sizes: ['4-5Y', '6-7Y', '8-9Y', '10-11Y', '12-13Y'],
-      colors: ['Black', 'White'],
+      colors: [{ name: 'Black', value: '#000000', image: '' }, { name: 'White', value: '#FFFFFF', image: '' }],
       description: 'Elegant dress with contrast piping and bow detail.',
       isBestSeller: true
     },
@@ -109,7 +119,7 @@ function AppContent() {
       ],
       category: 'Woman',
       sizes: ['XS', 'S', 'M', 'L', 'XL'],
-      colors: ['Black'],
+      colors: [{ name: 'Black', value: '#000000', image: '' }],
       description: 'Asymmetric linen midi dress with cut-out details. Features a modern silhouette with breathable linen fabric perfect for warm weather. The asymmetric hemline adds contemporary edge to this versatile piece.',
       isBestSeller: false
     },
@@ -123,7 +133,7 @@ function AppContent() {
       images: ['/FLOWY ELASTIC MIDI DRESS.jpg'],
       category: 'Woman',
       sizes: ['S', 'M', 'L', 'XL'],
-      colors: ['Black'],
+      colors: [{ name: 'Black', value: '#000000', image: '' }],
       description: 'Midi dress made with viscose yarn. Straight elastic neckline and thin adjustable straps. Draped fabric detail on the chest with elastic.',
       isBestSeller: true
     },
@@ -140,7 +150,7 @@ function AppContent() {
       ],
       category: 'Home',
       sizes: ['45x45cm', '50x50cm'],
-      colors: ['Beige', 'White', 'Grey', 'Navy'],
+      colors: [{ name: 'Beige', value: '#F5F5DC', image: '' }, { name: 'White', value: '#FFFFFF', image: '' }, { name: 'Grey', value: '#808080', image: '' }, { name: 'Navy', value: '#000080', image: '' }],
       description: 'Premium cotton and linen patchwork with artisanal craftsmanship.',
       isBestSeller: true
     }
